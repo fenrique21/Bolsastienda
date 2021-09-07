@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_06_155027) do
+ActiveRecord::Schema.define(version: 2021_09_07_152436) do
 
   create_table "clientes", force: :cascade do |t|
     t.string "nombre", null: false
@@ -19,6 +19,16 @@ ActiveRecord::Schema.define(version: 2021_09_06_155027) do
     t.string "telefono"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "facturas", force: :cascade do |t|
+    t.date "fecha", null: false
+    t.float "total", null: false
+    t.boolean "anulada", null: false
+    t.integer "cliente_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cliente_id"], name: "index_facturas_on_cliente_id"
   end
 
 end
