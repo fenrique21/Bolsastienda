@@ -6,6 +6,13 @@ class FacturasController < ApplicationController
         render :ok, json: @facturas
     end
 
+    # Get /facturas/:id
+    def show
+        @factura = Factura.find(params[:id])
+
+        render 200, json: @factura
+    end
+
     def create
         @factura = Factura.new(factura_params)
 

@@ -7,6 +7,12 @@ class ClientesController < ApplicationController
         render :ok, json: @clientes
     end
 
+    def show
+        @cliente = Cliente.find(params[:id])
+
+        render 200, json: @cliente
+    end
+
     def create
         @cliente = Cliente.new(cliente_params)
 
