@@ -1,0 +1,2 @@
+class Bolsa < ApplicationRecord
+end

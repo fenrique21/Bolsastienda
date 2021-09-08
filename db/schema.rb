@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_07_152436) do
+ActiveRecord::Schema.define(version: 2021_09_08_180417) do
+
+  create_table "bolsas", force: :cascade do |t|
+    t.string "nombre", null: false
+    t.string "codigo", null: false
+    t.text "descripcion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "clientes", force: :cascade do |t|
     t.string "nombre", null: false
@@ -29,6 +37,25 @@ ActiveRecord::Schema.define(version: 2021_09_07_152436) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cliente_id"], name: "index_facturas_on_cliente_id"
+  end
+
+  create_table "marcas", force: :cascade do |t|
+    t.string "nombre", null: false
+    t.boolean "activa", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "productos", force: :cascade do |t|
+    t.integer "cantidad", null: false
+    t.float "precio", null: false
+    t.boolean "activo", null: false
+    t.integer "bolsa_id", null: false
+    t.integer "marca_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bolsa_id"], name: "index_productos_on_bolsa_id"
+    t.index ["marca_id"], name: "index_productos_on_marca_id"
   end
 
 end
